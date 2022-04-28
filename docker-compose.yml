@@ -1,0 +1,25 @@
+version: '2'
+services:
+  angular:
+    container_name: angular
+    build:
+      context: ./demo-app
+      dockerfile: Dockerfile
+    image: lioneldelsupexhe/fullstack-app-angular:v1
+    ports:
+      - 1080:80
+    networks:
+      - fullstack-app-network
+  spring:
+    container_name: spring
+    build:
+      context: ./demo
+      dockerfile: Dockerfile
+    image: lioneldelsupexhe/fullstack-app-spring-boot:v1
+    ports:
+      - 8081:8080
+    networks:
+      - fullstack-app-network
+networks:
+  fullstack-app-network:
+    driver: bridge
